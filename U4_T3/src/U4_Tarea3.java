@@ -13,6 +13,7 @@ public class U4_Tarea3 {
     public static final int MAX_TRIANGULO = 5;
     //FIN CONSTANTES   
     
+    //Variables globales
     private static int i = 0, j = 0;
    
     public static void main(String[] args) {
