@@ -1,6 +1,7 @@
 
 public class U4_Tarea3 {
     
+    //CONSTANTES
     public static final String [] DIAS_SEMANA = {
                                                  "Lunes",
                                                  "Martes",
@@ -10,6 +11,7 @@ public class U4_Tarea3 {
                                                  "Sabado",
                                                  "Domingo"};
     public static final int MAX_TRIANGULO = 5;
+    //FIN CONSTANTES
    
     public static void main(String[] args) {
         
@@ -18,6 +20,7 @@ public class U4_Tarea3 {
         programa.inicio();
     }
     
+    //Metodo de ejecución
     public static void inicio()
     {
         //Ejeción del programa               
@@ -26,6 +29,7 @@ public class U4_Tarea3 {
         dibuixTriangle();
     }
     
+    //Muestras los días de la semana (String)
     public static void mostrarDiesDeLaSetmana()
     {
         for(int i = 0; i < DIAS_SEMANA.length; i++)
@@ -34,6 +38,7 @@ public class U4_Tarea3 {
         }
     }
     
+    //Dibuja un triángulo
     public static void dibuixTriangle()
     {
         for(int i = 0; i < MAX_TRIANGULO; i++)
