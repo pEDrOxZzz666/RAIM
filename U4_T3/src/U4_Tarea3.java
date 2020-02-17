@@ -43,7 +43,7 @@ public class U4_Tarea3 {
     {
         for(int i = 0; i < MAX_TRIANGULO; i++)
         {
-            for(int b = 0; b < i+1; b++)
+            for(int j = 0; j < i+1; j++)
             {
                 System.out.print("*");
             }
