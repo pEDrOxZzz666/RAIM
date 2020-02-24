@@ -1,7 +1,8 @@
 
 public class AppEac4P1 {
 
-    int posVarietat = 0;
+    boolean para = false;
+    int posVarietat = -1;
     String mVarietat[] = {"Ull de llebre","Garnatxa","Xarel·lo","Macabeu","Parellada"};
     int mQuantitat[]={0,0,0,0,0};
     int quantitatTotalRaim = 0;
@@ -57,10 +58,11 @@ public class AppEac4P1 {
     
     private void inici(){
         
-        boolean error=false;        
+        boolean error=false; 
+        int suma = 0;
         
         entradaRaim("raïm negre",  100);
-        for(int i=0; i<mQuantitat.length; i++){
+        for(int i=0; i<mQuantitat.length-2; i++){
            if(mQuantitat[i]>0){
                 error = true;
                 mQuantitat[0]=0;
@@ -72,26 +74,72 @@ public class AppEac4P1 {
             System.out.println("Entrada correcta");
         }
 
-        for(int i=0; i<dadesVerificacio.length; i++){
+        for(int i=0; i<dadesVerificacio.length ; i++){
             String nomRaim =  mVarietat[dadesVerificacio[i][0]];
             entradaRaim(nomRaim,  dadesVerificacio[i][1]);
+            
             if( mQuantitat[dadesVerificacio[i][0]]== dadesVerificacio[i][2]){
                     System.out.println("Entrada correcta");
             }else{
-                    System.out.println("Error a l’entrada");
+                   System.out.println("Error a l’entrada");
             }
-        }    
+        }
+        
+        for(int i=0; i<mQuantitat.length; i++)
+        {
+            
+            suma += mQuantitat[i];
+        }
+        
+        System.out.println(suma);
     }
      
-    private void entradaRaim(String varietat, int quantitat){
+     private void entradaRaim(String varietat, int quantitat){
+                
+        quantitatTotalRaim = quantitat;
+        for(int i = 0; i < mQuantitat.length; i++)
+        {
+            quantitatTotalRaim += mQuantitat[i];
+        }
+        //quantitatTotalRaim += quantitat;
         
+        //System.out.println(quantitatTotalRaim);
         
+        if((quantitatTotalRaim) <= 25000)
+        {
+            posicioVarietat(varietat);
+            if(posVarietat != -1)
+            {
+                mQuantitat[posVarietat] += quantitat;
+                //System.out.println("Se ha añadido correctamente.");
+            }else
+            {
+                System.out.println("No se encuentra la variedad.");
+            }
+        }else
+        {
+            para = true;
+            System.out.println("Superada cantidad máxima");
+            
+        }  
         
     }
     
     private int posicioVarietat(String varietat){      
         
-        return quantitatTotalRaim;
+        boolean para = false;
+        for(int i = 0; i < mVarietat.length && !para; i++)
+        {
+            if(mVarietat[i].equals(varietat))
+            {
+                posVarietat = i;
+                para = true;
+            }else
+            {
+                posVarietat = -1;
+            }
+        }
+        return posVarietat;
         
     }           
 
