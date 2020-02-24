@@ -1,8 +1,10 @@
 
 public class AppEac4P1 {
-
-    boolean para = false;
-    int posVarietat = -1;
+        
+    // CONSTANTES //
+    public static final int MAX_ALMACENAJE = 25000;
+    // FIN CONSTANTES //
+    
     String mVarietat[] = {"Ull de llebre","Garnatxa","Xarel·lo","Macabeu","Parellada"};
     int mQuantitat[]={0,0,0,0,0};
     int quantitatTotalRaim = 0;
@@ -39,7 +41,7 @@ public class AppEac4P1 {
                                 {1,949,3179},
                                 {4,970,4090},    
                                 {3,998,3755},    
-                                {1,981,4160},    
+                                {1,981,4160}, 
                                 {2,999,4402},    
                                 {3,999,4754},    
                                 {4,999,5089},    
@@ -85,13 +87,11 @@ public class AppEac4P1 {
             }
         }
         
-        for(int i=0; i<mQuantitat.length; i++)
-        {
-            
-            suma += mQuantitat[i];
-        }
         
-        System.out.println(suma);
+//        for(int i = 0; i < dadesVerificacio.length; i++)
+//        {
+//            System.out.println(i + " -" + (suma += dadesVerificacio[i][1]));
+//        }
     }
      
      private void entradaRaim(String varietat, int quantitat){
@@ -101,45 +101,37 @@ public class AppEac4P1 {
         {
             quantitatTotalRaim += mQuantitat[i];
         }
-        //quantitatTotalRaim += quantitat;
-        
-        //System.out.println(quantitatTotalRaim);
-        
-        if((quantitatTotalRaim) <= 25000)
+                
+        if((quantitatTotalRaim) <= MAX_ALMACENAJE)
         {
-            posicioVarietat(varietat);
-            if(posVarietat != -1)
+            int posicion = posicioVarietat(varietat);
+            if(posicion != -1)
             {
-                mQuantitat[posVarietat] += quantitat;
-                //System.out.println("Se ha añadido correctamente.");
+                mQuantitat[posicion] += quantitat;                
             }else
             {
-                System.out.println("No se encuentra la variedad.");
+                System.out.println("No se encuentra la variedad. ");
+                
             }
         }else
-        {
-            para = true;
-            System.out.println("Superada cantidad máxima");
-            
+        {            
+            System.out.println("Superada cantidad máxima (" + MAX_ALMACENAJE + "kg). " + 
+                              (quantitatTotalRaim - quantitat) + " + " + 
+                               quantitat + " = " + quantitatTotalRaim + " kg");            
         }  
         
     }
     
     private int posicioVarietat(String varietat){      
-        
-        boolean para = false;
-        for(int i = 0; i < mVarietat.length && !para; i++)
+                
+        for(int i = 0; i < mVarietat.length; i++)
         {
             if(mVarietat[i].equals(varietat))
             {
-                posVarietat = i;
-                para = true;
-            }else
-            {
-                posVarietat = -1;
+               return i;
             }
         }
-        return posVarietat;
+        return -1;
         
     }           
 
